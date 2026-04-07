@@ -1,0 +1,200 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("/assets/fonts/JetBrainsMono.woff2") format("woff2");
+  font-weight: 300 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("/assets/fonts/BricolageGrotesque.woff2") format("woff2");
+  font-weight: 200 800;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+    --background: 0.12 0.018 252;
+    --foreground: 0.92 0.008 252;
+    --card: 0.16 0.022 252;
+    --card-foreground: 0.92 0.008 252;
+    --popover: 0.18 0.024 252;
+    --popover-foreground: 0.92 0.008 252;
+    --primary: 0.72 0.19 38;
+    --primary-foreground: 0.08 0.01 252;
+    --secondary: 0.2 0.026 252;
+    --secondary-foreground: 0.85 0.01 252;
+    --muted: 0.2 0.026 252;
+    --muted-foreground: 0.6 0.01 252;
+    --accent: 0.22 0.03 252;
+    --accent-foreground: 0.92 0.008 252;
+    --destructive: 0.65 0.22 25;
+    --destructive-foreground: 0.98 0 0;
+    --border: 0.25 0.03 252;
+    --input: 0.22 0.026 252;
+    --ring: 0.72 0.19 38;
+    --chart-1: 0.72 0.19 38;
+    --chart-2: 0.7 0.2 295;
+    --chart-3: 0.75 0.18 196;
+    --chart-4: 0.68 0.2 142;
+    --chart-5: 0.65 0.18 220;
+    --sidebar: 0.11 0.016 252;
+    --sidebar-foreground: 0.92 0.008 252;
+    --sidebar-primary: 0.72 0.19 38;
+    --sidebar-primary-foreground: 0.08 0.01 252;
+    --sidebar-accent: 0.18 0.024 252;
+    --sidebar-accent-foreground: 0.85 0.01 252;
+    --sidebar-border: 0.22 0.028 252;
+    --sidebar-ring: 0.72 0.19 38;
+  }
+
+  .dark {
+    --background: 0.12 0.018 252;
+    --foreground: 0.92 0.008 252;
+    --card: 0.16 0.022 252;
+    --card-foreground: 0.92 0.008 252;
+    --popover: 0.18 0.024 252;
+    --popover-foreground: 0.92 0.008 252;
+    --primary: 0.72 0.19 38;
+    --primary-foreground: 0.08 0.01 252;
+    --secondary: 0.2 0.026 252;
+    --secondary-foreground: 0.85 0.01 252;
+    --muted: 0.2 0.026 252;
+    --muted-foreground: 0.6 0.01 252;
+    --accent: 0.22 0.03 252;
+    --accent-foreground: 0.92 0.008 252;
+    --destructive: 0.65 0.22 25;
+    --destructive-foreground: 0.98 0 0;
+    --border: 0.25 0.03 252;
+    --input: 0.22 0.026 252;
+    --ring: 0.72 0.19 38;
+    --chart-1: 0.72 0.19 38;
+    --chart-2: 0.7 0.2 295;
+    --chart-3: 0.75 0.18 196;
+    --chart-4: 0.68 0.2 142;
+    --chart-5: 0.65 0.18 220;
+    --sidebar: 0.11 0.016 252;
+    --sidebar-foreground: 0.92 0.008 252;
+    --sidebar-primary: 0.72 0.19 38;
+    --sidebar-primary-foreground: 0.08 0.01 252;
+    --sidebar-accent: 0.18 0.024 252;
+    --sidebar-accent-foreground: 0.85 0.01 252;
+    --sidebar-border: 0.22 0.028 252;
+    --sidebar-ring: 0.72 0.19 38;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  }
+
+  code,
+  pre,
+  .mono {
+    font-family: "JetBrains Mono", "Courier New", monospace;
+  }
+}
+
+@layer utilities {
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: oklch(0.25 0.03 252) transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: oklch(0.25 0.03 252);
+    border-radius: 2px;
+  }
+
+  .glow-orange {
+    box-shadow: 0 0 20px oklch(0.72 0.19 38 / 0.3);
+  }
+
+  .glow-purple {
+    box-shadow: 0 0 20px oklch(0.7 0.2 295 / 0.3);
+  }
+
+  .glow-cyan {
+    box-shadow: 0 0 20px oklch(0.75 0.18 196 / 0.3);
+  }
+
+  @keyframes pulse-dot {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.3;
+    }
+  }
+
+  @keyframes slide-in-right {
+    from {
+      transform: translateX(20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes slide-in-up {
+    from {
+      transform: translateY(10px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes typing {
+    0%,
+    60%,
+    100% {
+      transform: translateY(0);
+    }
+    30% {
+      transform: translateY(-6px);
+    }
+  }
+
+  .animate-pulse-dot {
+    animation: pulse-dot 1.5s ease-in-out infinite;
+  }
+
+  .animate-slide-in-right {
+    animation: slide-in-right 0.3s ease-out;
+  }
+
+  .animate-slide-in-up {
+    animation: slide-in-up 0.2s ease-out;
+  }
+
+  .animate-typing {
+    animation: typing 1.2s ease-in-out infinite;
+  }
+}

@@ -1,0 +1,796 @@
+import type { IntegrationConfig } from "../types/integrations";
+
+export const integrationCatalog: IntegrationConfig[] = [
+  // AI Models
+  {
+    id: "openai",
+    name: "OpenAI",
+    category: "ai",
+    description:
+      "Connect GPT-4, GPT-3.5, and other OpenAI models for code generation, analysis, and chat.",
+    capabilities: [
+      "GPT-4 Turbo",
+      "Code generation",
+      "Embeddings",
+      "Function calling",
+    ],
+    icon: "🤖",
+    configFields: [
+      {
+        key: "apiKey",
+        label: "API Key",
+        type: "password",
+        placeholder: "sk-...",
+        required: true,
+      },
+      {
+        key: "model",
+        label: "Default Model",
+        type: "text",
+        placeholder: "gpt-4-turbo-preview",
+        required: false,
+      },
+    ],
+  },
+  {
+    id: "anthropic",
+    name: "Anthropic Claude",
+    category: "ai",
+    description:
+      "Access Claude 3 Opus, Sonnet, and Haiku for reasoning, analysis, and code.",
+    capabilities: [
+      "Claude 3 Opus",
+      "Code analysis",
+      "Long context",
+      "Tool use",
+    ],
+    icon: "🧠",
+    configFields: [
+      {
+        key: "apiKey",
+        label: "API Key",
+        type: "password",
+        placeholder: "sk-ant-...",
+        required: true,
+      },
+    ],
+  },
+  {
+    id: "gemini",
+    name: "Google Gemini",
+    category: "ai",
+    description: "Integrate Gemini Pro and Ultra for multimodal AI tasks.",
+    capabilities: ["Gemini Pro", "Multimodal", "Code completion", "Grounding"],
+    icon: "✨",
+    configFields: [
+      {
+        key: "apiKey",
+        label: "API Key",
+        type: "password",
+        placeholder: "AIza...",
+        required: true,
+      },
+    ],
+  },
+  {
+    id: "groq",
+    name: "Groq",
+    category: "ai",
+    description:
+      "Ultra-fast LLM inference with Llama 3 and Mixtral via GroqCloud.",
+    capabilities: ["Llama 3", "Mixtral", "Fast inference", "Batch API"],
+    icon: "⚡",
+    configFields: [
+      {
+        key: "apiKey",
+        label: "API Key",
+        type: "password",
+        placeholder: "gsk_...",
+        required: true,
+      },
+    ],
+  },
+  {
+    id: "mistral",
+    name: "Mistral AI",
+    category: "ai",
+    description:
+      "Run Mistral 7B, Mixtral, and Mistral Large for efficient inference.",
+    capabilities: [
+      "Mistral Large",
+      "Mixtral 8x7B",
+      "Function calls",
+      "JSON mode",
+    ],
+    icon: "🌊",
+    configFields: [
+      {
+        key: "apiKey",
+        label: "API Key",
+        type: "password",
+        placeholder: "...",
+        required: true,
+      },
+    ],
+  },
+  {
+    id: "huggingface",
+    name: "HuggingFace",
+    category: "ai",
+    description: "Access 300,000+ open-source models via the Inference API.",
+    capabilities: [
+      "Inference API",
+      "Transformers",
+      "Open models",
+      "Embeddings",
+    ],
+    icon: "🤗",
+    configFields: [
+      {
+        key: "apiKey",
+        label: "Access Token",
+        type: "password",
+        placeholder: "hf_...",
+        required: true,
+      },
+    ],
+  },
+  {
+    id: "together",
+    name: "Together AI",
+    category: "ai",
+    description:
+      "Run open-source models fast via Together's inference platform.",
+    capabilities: ["Llama 3", "DeepSeek", "Fast API", "Streaming"],
+    icon: "🔗",
+    configFields: [
+      {
+        key: "apiKey",
+        label: "API Key",
+        type: "password",
+        placeholder: "...",
+        required: true,
+      },
+    ],
+  },
+  // Cloud
+  {
+    id: "aws",
+    name: "Amazon AWS",
+    category: "cloud",
+    description: "Deploy to S3, Lambda, EC2, and other AWS services.",
+    capabilities: [
+      "S3 storage",
+      "Lambda functions",
+      "EC2 instances",
+      "CloudWatch",
+    ],
+    icon: "☁️",
+    configFields: [
+      {
+        key: "accessKeyId",
+        label: "Access Key ID",
+        type: "text",
+        placeholder: "AKIA...",
+        required: true,
+      },
+      {
+        key: "secretKey",
+        label: "Secret Access Key",
+        type: "password",
+        placeholder: "...",
+        required: true,
+      },
+      {
+        key: "region",
+        label: "Region",
+        type: "text",
+        placeholder: "us-east-1",
+        required: false,
+      },
+    ],
+  },
+  {
+    id: "gcp",
+    name: "Google Cloud",
+    category: "cloud",
+    description: "Integrate with GCP for Cloud Run, GCS, BigQuery, and more.",
+    capabilities: ["Cloud Run", "GCS buckets", "BigQuery", "Cloud Build"],
+    icon: "🌐",
+    configFields: [
+      {
+        key: "projectId",
+        label: "Project ID",
+        type: "text",
+        placeholder: "my-project-id",
+        required: true,
+      },
+      {
+        key: "serviceAccount",
+        label: "Service Account JSON",
+        type: "password",
+        placeholder: "{...}",
+        required: true,
+      },
+    ],
+  },
+  {
+    id: "azure",
+    name: "Microsoft Azure",
+    category: "cloud",
+    description: "Deploy and manage resources across Azure's cloud platform.",
+    capabilities: [
+      "Azure Functions",
+      "Blob Storage",
+      "Container Apps",
+      "DevOps",
+    ],
+    icon: "🔷",
+    configFields: [
+      {
+        key: "subscriptionId",
+        label: "Subscription ID",
+        type: "text",
+        placeholder: "...",
+        required: true,
+      },
+      {
+        key: "tenantId",
+        label: "Tenant ID",
+        type: "text",
+        placeholder: "...",
+        required: true,
+      },
+    ],
+  },
+  {
+    id: "vercel",
+    name: "Vercel",
+    category: "cloud",
+    description: "Deploy frontend apps and serverless functions instantly.",
+    capabilities: [
+      "Auto deployments",
+      "Edge network",
+      "Serverless",
+      "Preview URLs",
+    ],
+    icon: "▲",
+    configFields: [
+      {
+        key: "token",
+        label: "API Token",
+        type: "password",
+        placeholder: "...",
+        required: true,
+      },
+      {
+        key: "teamId",
+        label: "Team ID (optional)",
+        type: "text",
+        placeholder: "team_...",
+        required: false,
+      },
+    ],
+  },
+  {
+    id: "railway",
+    name: "Railway",
+    category: "cloud",
+    description:
+      "Deploy full-stack apps with databases and services in one click.",
+    capabilities: [
+      "One-click deploy",
+      "Auto scaling",
+      "Built-in DB",
+      "CLI deploy",
+    ],
+    icon: "🚂",
+    configFields: [
+      {
+        key: "token",
+        label: "API Token",
+        type: "password",
+        placeholder: "...",
+        required: true,
+      },
+    ],
+  },
+  {
+    id: "render",
+    name: "Render",
+    category: "cloud",
+    description:
+      "Build and deploy apps, workers, and static sites effortlessly.",
+    capabilities: [
+      "Auto deploy",
+      "Static sites",
+      "Background workers",
+      "Managed DBs",
+    ],
+    icon: "🔧",
+    configFields: [
+      {
+        key: "apiKey",
+        label: "API Key",
+        type: "password",
+        placeholder: "rnd_...",
+        required: true,
+      },
+    ],
+  },
+  {
+    id: "flyio",
+    name: "Fly.io",
+    category: "cloud",
+    description: "Run apps globally on Fly's edge infrastructure.",
+    capabilities: ["Global deploy", "Docker support", "Volumes", "Anycast IPs"],
+    icon: "🪁",
+    configFields: [
+      {
+        key: "token",
+        label: "API Token",
+        type: "password",
+        placeholder: "fo1_...",
+        required: true,
+      },
+    ],
+  },
+  // Databases
+  {
+    id: "supabase",
+    name: "Supabase",
+    category: "database",
+    description:
+      "Open-source Firebase alternative with PostgreSQL, Auth, and Storage.",
+    capabilities: [
+      "PostgreSQL",
+      "Auth",
+      "Realtime",
+      "Storage",
+      "Edge Functions",
+    ],
+    icon: "🟢",
+    configFields: [
+      {
+        key: "url",
+        label: "Project URL",
+        type: "url",
+        placeholder: "https://xxx.supabase.co",
+        required: true,
+      },
+      {
+        key: "anonKey",
+        label: "Anon Key",
+        type: "password",
+        placeholder: "eyJ...",
+        required: true,
+      },
+    ],
+  },
+  {
+    id: "firebase",
+    name: "Firebase",
+    category: "database",
+    description: "Google's real-time database, auth, and hosting platform.",
+    capabilities: [
+      "Firestore",
+      "Realtime DB",
+      "Auth",
+      "Hosting",
+      "Cloud Functions",
+    ],
+    icon: "🔥",
+    configFields: [
+      {
+        key: "projectId",
+        label: "Project ID",
+        type: "text",
+        placeholder: "my-project",
+        required: true,
+      },
+      {
+        key: "apiKey",
+        label: "Web API Key",
+        type: "password",
+        placeholder: "AIza...",
+        required: true,
+      },
+    ],
+  },
+  {
+    id: "mongodb",
+    name: "MongoDB Atlas",
+    category: "database",
+    description:
+      "Scalable cloud-hosted MongoDB with built-in aggregation and search.",
+    capabilities: ["Aggregation", "Atlas Search", "Triggers", "Charts"],
+    icon: "🍃",
+    configFields: [
+      {
+        key: "uri",
+        label: "Connection URI",
+        type: "password",
+        placeholder: "mongodb+srv://...",
+        required: true,
+      },
+    ],
+  },
+  {
+    id: "neon",
+    name: "Neon",
+    category: "database",
+    description: "Serverless PostgreSQL with branching and autoscaling.",
+    capabilities: ["Serverless PG", "Branching", "Autoscale", "Edge proxy"],
+    icon: "💧",
+    configFields: [
+      {
+        key: "connectionString",
+        label: "Connection String",
+        type: "password",
+        placeholder: "postgres://...",
+        required: true,
+      },
+    ],
+  },
+  {
+    id: "planetscale",
+    name: "PlanetScale",
+    category: "database",
+    description: "MySQL-compatible serverless database with schema branching.",
+    capabilities: [
+      "Schema branching",
+      "MySQL compat",
+      "Insights",
+      "Deploy requests",
+    ],
+    icon: "🪐",
+    configFields: [
+      {
+        key: "token",
+        label: "Service Token",
+        type: "password",
+        placeholder: "pscale_tkn_...",
+        required: true,
+      },
+    ],
+  },
+  {
+    id: "redis",
+    name: "Redis / Upstash",
+    category: "database",
+    description: "In-memory caching and message queuing via Upstash.",
+    capabilities: ["Caching", "Pub/Sub", "Rate limiting", "Queues"],
+    icon: "🔴",
+    configFields: [
+      {
+        key: "url",
+        label: "Redis URL",
+        type: "url",
+        placeholder: "rediss://...",
+        required: true,
+      },
+      {
+        key: "token",
+        label: "REST Token",
+        type: "password",
+        placeholder: "...",
+        required: false,
+      },
+    ],
+  },
+  // Dev Tools
+  {
+    id: "github",
+    name: "GitHub",
+    category: "devtools",
+    description:
+      "Read repos, create branches, open PRs, and trigger workflows.",
+    capabilities: ["Read repos", "Create PRs", "GitHub Actions", "Code search"],
+    icon: "🐙",
+    configFields: [
+      {
+        key: "token",
+        label: "Personal Access Token",
+        type: "password",
+        placeholder: "ghp_...",
+        required: true,
+      },
+      {
+        key: "org",
+        label: "Default Org/User",
+        type: "text",
+        placeholder: "my-org",
+        required: false,
+      },
+    ],
+  },
+  {
+    id: "gitlab",
+    name: "GitLab",
+    category: "devtools",
+    description: "Interact with GitLab repos, pipelines, and merge requests.",
+    capabilities: ["MR creation", "CI/CD pipelines", "Issues", "Registry"],
+    icon: "🦊",
+    configFields: [
+      {
+        key: "token",
+        label: "Access Token",
+        type: "password",
+        placeholder: "glpat-...",
+        required: true,
+      },
+      {
+        key: "host",
+        label: "Host URL",
+        type: "url",
+        placeholder: "https://gitlab.com",
+        required: false,
+      },
+    ],
+  },
+  {
+    id: "jira",
+    name: "Jira",
+    category: "devtools",
+    description: "Create, update, and search Jira issues from the agent.",
+    capabilities: ["Create issues", "Search JQL", "Update status", "Sprints"],
+    icon: "🔵",
+    configFields: [
+      {
+        key: "host",
+        label: "Jira Host",
+        type: "url",
+        placeholder: "https://myteam.atlassian.net",
+        required: true,
+      },
+      {
+        key: "email",
+        label: "Email",
+        type: "text",
+        placeholder: "user@example.com",
+        required: true,
+      },
+      {
+        key: "token",
+        label: "API Token",
+        type: "password",
+        placeholder: "...",
+        required: true,
+      },
+    ],
+  },
+  {
+    id: "linear",
+    name: "Linear",
+    category: "devtools",
+    description:
+      "Fast issue tracking and project management for engineering teams.",
+    capabilities: [
+      "Create issues",
+      "Update cycles",
+      "Roadmap sync",
+      "Webhooks",
+    ],
+    icon: "⚫",
+    configFields: [
+      {
+        key: "apiKey",
+        label: "API Key",
+        type: "password",
+        placeholder: "lin_api_...",
+        required: true,
+      },
+    ],
+  },
+  {
+    id: "notion",
+    name: "Notion",
+    category: "devtools",
+    description: "Read and write Notion pages, databases, and documents.",
+    capabilities: ["Create pages", "Query databases", "Block API", "Comments"],
+    icon: "📓",
+    configFields: [
+      {
+        key: "token",
+        label: "Integration Token",
+        type: "password",
+        placeholder: "ntn_...",
+        required: true,
+      },
+    ],
+  },
+  {
+    id: "figma",
+    name: "Figma",
+    category: "devtools",
+    description:
+      "Extract design tokens, components, and prototypes from Figma files.",
+    capabilities: ["Read files", "Components", "Variables", "Dev mode"],
+    icon: "🎨",
+    configFields: [
+      {
+        key: "token",
+        label: "Personal Token",
+        type: "password",
+        placeholder: "figd_...",
+        required: true,
+      },
+    ],
+  },
+  // APIs & Services
+  {
+    id: "stripe",
+    name: "Stripe",
+    category: "apis",
+    description:
+      "Accept payments, manage subscriptions, and handle billing events.",
+    capabilities: ["Payments", "Subscriptions", "Webhooks", "Customer portal"],
+    icon: "💳",
+    configFields: [
+      {
+        key: "secretKey",
+        label: "Secret Key",
+        type: "password",
+        placeholder: "sk_live_...",
+        required: true,
+      },
+      {
+        key: "webhookSecret",
+        label: "Webhook Secret",
+        type: "password",
+        placeholder: "whsec_...",
+        required: false,
+      },
+    ],
+  },
+  {
+    id: "twilio",
+    name: "Twilio",
+    category: "apis",
+    description: "Send SMS, make calls, and build communication workflows.",
+    capabilities: ["SMS", "Voice calls", "WhatsApp", "Verify"],
+    icon: "📱",
+    configFields: [
+      {
+        key: "accountSid",
+        label: "Account SID",
+        type: "text",
+        placeholder: "AC...",
+        required: true,
+      },
+      {
+        key: "authToken",
+        label: "Auth Token",
+        type: "password",
+        placeholder: "...",
+        required: true,
+      },
+    ],
+  },
+  {
+    id: "sendgrid",
+    name: "SendGrid",
+    category: "apis",
+    description: "Send transactional and marketing emails at scale.",
+    capabilities: ["Transactional email", "Templates", "Analytics", "Webhooks"],
+    icon: "📧",
+    configFields: [
+      {
+        key: "apiKey",
+        label: "API Key",
+        type: "password",
+        placeholder: "SG...",
+        required: true,
+      },
+      {
+        key: "fromEmail",
+        label: "Sender Email",
+        type: "text",
+        placeholder: "noreply@example.com",
+        required: false,
+      },
+    ],
+  },
+  {
+    id: "slack",
+    name: "Slack",
+    category: "apis",
+    description: "Post messages, read channels, and automate Slack workflows.",
+    capabilities: [
+      "Post messages",
+      "Read channels",
+      "Slash commands",
+      "Modals",
+    ],
+    icon: "💬",
+    configFields: [
+      {
+        key: "token",
+        label: "Bot Token",
+        type: "password",
+        placeholder: "xoxb-...",
+        required: true,
+      },
+      {
+        key: "webhookUrl",
+        label: "Webhook URL (optional)",
+        type: "url",
+        placeholder: "https://hooks.slack.com/...",
+        required: false,
+      },
+    ],
+  },
+  {
+    id: "discord",
+    name: "Discord",
+    category: "apis",
+    description: "Send messages, manage servers, and build Discord bots.",
+    capabilities: ["Send messages", "Manage roles", "Bot commands", "Webhooks"],
+    icon: "🎮",
+    configFields: [
+      {
+        key: "token",
+        label: "Bot Token",
+        type: "password",
+        placeholder: "...",
+        required: true,
+      },
+      {
+        key: "webhookUrl",
+        label: "Webhook URL",
+        type: "url",
+        placeholder: "https://discord.com/api/webhooks/...",
+        required: false,
+      },
+    ],
+  },
+  {
+    id: "zapier",
+    name: "Zapier",
+    category: "apis",
+    description:
+      "Trigger and receive Zapier webhooks to automate workflows across 6,000+ apps.",
+    capabilities: [
+      "Trigger zaps",
+      "Receive hooks",
+      "Automation",
+      "NLA Actions",
+    ],
+    icon: "⚡",
+    configFields: [
+      {
+        key: "webhookUrl",
+        label: "Webhook URL",
+        type: "url",
+        placeholder: "https://hooks.zapier.com/...",
+        required: true,
+      },
+    ],
+  },
+  {
+    id: "resend",
+    name: "Resend",
+    category: "apis",
+    description: "Developer-first email API built for modern apps.",
+    capabilities: ["Transactional email", "React Email", "Webhooks", "Domains"],
+    icon: "📨",
+    configFields: [
+      {
+        key: "apiKey",
+        label: "API Key",
+        type: "password",
+        placeholder: "re_...",
+        required: true,
+      },
+    ],
+  },
+];
+
+export const categoryLabels: Record<string, string> = {
+  all: "All",
+  ai: "AI Models",
+  cloud: "Cloud",
+  database: "Databases",
+  devtools: "Dev Tools",
+  apis: "APIs & Services",
+};
